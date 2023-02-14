@@ -1,36 +1,24 @@
-import React, {useState} from "react";
-import Header from "./Header";
-import Body from "./Body";
-import LogInDonor from './LogInDonor';
-import LogInRecipient from './LogInRecipient'
-import Register from "./Register";
-import './styles/App.css';
+import React from 'react';
+import { Route, Routes} from "react-router-dom"
+import Donor from './Donor';
+import Home from "./Home"
+import Recipient from "./Recipient";
+import LogInDonor from "./LogInDonor";
+import LogInRecipient from './LogInRecipient';
+ 
 
 function App() {
-  const [currentForm, setCurrentForm] = useState("");
 
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-  // (function () {
-  //   let item = sessionStorage.getItem("test");
-  //   console.log(item);
-  // }
-  // )();
-
-  return (
-    <div style={{
-      height : '100%', backgroundColor: 'rgb(250, 245, 245)'}}>
-    <Header onFormSwitch={toggleForm} />
-    <div className="appContentSection">
-    {
-        currentForm === "" ? <Body /> : currentForm === "loginAsDonor" ?
-          <LogInDonor  /> : currentForm === "loginAsRecipient" ? <LogInRecipient  /> : <Register  />
-    }
-      </div>
-  </div>
-   
-  );
+   return (
+    <Routes>
+      <Route  path="/" element={<Home />} />
+      <Route path="/login/donor" element={<LogInDonor />} />
+       <Route path="/login/recipient" element={<LogInRecipient />} />
+       <Route path="/users/donor" element={<Donor />} />
+       <Route path="/users/recipient" element={<Recipient />} />
+     </Routes>
+     
+   )
 }
 
 export default App;
