@@ -1,10 +1,12 @@
 import React from "react";
 import "./styles/styles.css";
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
 
 
 
 function Header(props){
+  let nav = useNavigate();
     return(
        <header className="headerSection">
        <div className = "iconSection">
@@ -16,16 +18,16 @@ function Header(props){
        <div className="iconSection">
           <nav className="loginSection">
             <div className="a">
-              <Button variant="info" className ="headerButtons" onClick={() => props.onFormSwitch("")} >Home</Button>
+              <Button variant="info" className ="headerButtons" onClick={() => nav("/home")} >Home</Button>
             </div>
             <div className="a">
-              <Button variant="primary" className ="headerButtons" onClick={() => props.onFormSwitch('loginAsDonor')}>LogIn as Donor</Button>
+              <Button variant="primary" className ="headerButtons" onClick={() => nav("/login/donor")}>LogIn as Donor</Button>
             </div>
             <div className="a">
-            <Button variant="secondary"  className ="headerButtons" onClick={() => props.onFormSwitch('loginAsRecipient')}>LogIn as Recipient</Button>
+            <Button variant="secondary"  className ="headerButtons" onClick={() => nav("/login/recipient")}>LogIn as Recipient</Button>
             </div>
             <div className="a">
-              <Button variant="success"  className ="headerButtons" onClick={() => props.onFormSwitch('register')} >Register</Button>
+              <Button variant="success"  className ="headerButtons" onClick={() => nav("/register")} >Register</Button>
             </div>  
           </nav>  
        </div>

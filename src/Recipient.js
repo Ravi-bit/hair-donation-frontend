@@ -20,7 +20,6 @@ function Recipient() {
         let fetchedDataJson = JSON.parse(fetchedData);
         console.log(fetchedDataJson)
         if (!fetchedData || fetchedDataJson.userrole !== "RECIPIENT") {
-            console.log('inside necessary')
             nav("/login/recipient");
         } else {
             setUsername(`Hi, Recipient ${fetchedDataJson.username} !`);

@@ -14,11 +14,9 @@ const LogInRecipient = (props) => {
     useEffect(() => {
         let usercheck = sessionStorage.getItem("currentuser");
         let usercheckJson = JSON.parse(usercheck);
-        if (!usercheckJson) {
-            historyRedirect("/login/recipient");
-        } else {
-            historyRedirect("/users/recipient")
-        }
+        if (usercheckJson) {
+            historyRedirect("/users/recipient");
+        } 
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSubmit = async (e) => {

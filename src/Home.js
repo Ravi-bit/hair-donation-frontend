@@ -16,7 +16,7 @@ function Home() {
   return (
     <div style={{
       height : '100%', backgroundColor: 'rgb(250, 245, 245)'}}>
-    <Header onFormSwitch={toggleForm} />
+    <Header onFormSwitch={toggleForm} /> 
     <div className="appContentSection">
     {
         currentForm === "" ? <Body /> : currentForm === "loginAsDonor" ?

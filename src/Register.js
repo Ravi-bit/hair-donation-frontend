@@ -82,8 +82,8 @@ function Register(props){
 
     return (
         <>
-        <div className="auth-form-container" style={{}}>
-            <h2>Register</h2>
+        <div className="auth-form-container" >
+            <h2 style={{marginTop : 20}}>Register</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" id="username" name="username"  required/>
@@ -98,7 +98,7 @@ function Register(props){
                 <label htmlFor="phone">Phone number</label>
                 <input value={phone} onChange={(e) => setPhone(e.target.value)} type="phone"  id="phone" name="phone" required />
                
-                <button type="submit" style={{marginTop : 20, borderRadius :10, width : 100}}>Register</button>
+                <button type="submit" style={{marginTop : 20, borderRadius :10, width : 100, marginBottom: 20}}>Register</button>
             </form>
            
             </div>

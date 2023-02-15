@@ -6,7 +6,7 @@ import Footer from "./Footer";
 function Body() {
     return (
         <React.Fragment>
-        <div className="container" style={{backgroundColor: 'rgb(250, 245, 245)'}}>
+        <div className="containerSection" style={{backgroundColor: 'rgb(250, 245, 245)'}}>
             <div className="contentSection">
                 <h3>BLEED TO SAVE</h3>
                 <p><i>Bleed To Save is intended to help people in the need of hair, find the required hair by connecting with donors online.</i></p>
