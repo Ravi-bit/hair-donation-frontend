@@ -11,26 +11,24 @@ import { useNavigate } from "react-router-dom";
 function DonationContainer() {
 
     const [resD, setresD] = useState([]);
+    const [isupdated, setupdate] = useState(0);
     const historyRedirect = useNavigate();
 
     useEffect(() => {
         let usercheck = sessionStorage.getItem("currentuser");
         let usercheckJson = JSON.parse(usercheck);
-        if (!usercheckJson) {
+        if (!usercheckJson || usercheckJson.userrole !== "DONOR") {
             historyRedirect("/login/donor");
-        } else {
-            historyRedirect("/users/donor")
-        }
+        } 
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     
     useEffect(() => {
         const fetchData = async () => {
-            try { console.log("Inside useEffect")
+            try { 
                 let val = sessionStorage.getItem("currenttoken");
-                const options = { headers: { Authorization: "Bearer" + " " + val } }
-                console.log('after options')
-                
+                const options = { headers: { Authorization: "Bearer "+ val } }
+            
                 const res = await axios.get('http://localhost:5000/api/donors/requests',  options);
         
                 if (res.data.donations) {
@@ -44,16 +42,17 @@ function DonationContainer() {
                 toast.error(e);   
             }
         }
-    
-
         fetchData();
 
     }, []); 
     
+    const propHandler = ()=> {
+        setupdate(1);
+    }
     return (
         <div className="container">
             <h1 style={{ textAlign: 'center' }}>Your Submitted donations</h1>
-            {resD.map((donation) => (<CustomCard key = {donation.id} donationtype={donation.donationtype } donationstatus={donation.donationstatus} hairtype={donation.hairtype} time={donation.createdat} />))}
+            {resD.map((donation) => (<CustomCard key = {donation.id} id = {donation.id} donationtype={donation.donationtype } donationstatus={donation.donationstatus} hairtype={donation.hairtype} time={donation.createdat} updat = {propHandler} />))}
             <ToastContainer/>
         </div>
     );

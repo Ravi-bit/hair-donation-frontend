@@ -14,10 +14,8 @@ const Add = (props) => {
     useEffect(() => {
         let usercheck = sessionStorage.getItem("currentuser");
         let usercheckJson = JSON.parse(usercheck);
-        if (!usercheckJson) {
+        if (!usercheckJson || usercheckJson.userrole !== "DONOR") {
             historyRedirect("/login/donor");
-        } else {
-            historyRedirect("/users/donor")
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
     
@@ -31,7 +29,7 @@ const Add = (props) => {
         try {
             let val = sessionStorage.getItem("currenttoken");
     
-            const options = { headers: { Authorization: "Bearer" + " " + val} }
+            const options = { headers: { Authorization: "Bearer " + val} }
             const res = await axios.post('http://localhost:5000/api/donors/requests', post, options);
     
             if (res.data.message) {

@@ -14,11 +14,9 @@ function Search() {
     useEffect(() => {
         let usercheck = sessionStorage.getItem("currentuser");
         let usercheckJson = JSON.parse(usercheck);
-        if (!usercheckJson) {
-            historyRedirect("/login/donor");
-        } else {
-            historyRedirect("/users/donor")
-        }
+        if (!usercheckJson || usercheckJson.userrole !== "RECIPIENT") {
+            historyRedirect("/login/recipient");
+        } 
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSubmit = async (e) => {
@@ -26,7 +24,7 @@ function Search() {
         try {
             let val = sessionStorage.getItem("currenttoken");
     
-            const options = { headers: { Authorization: "Bearer" + " " + val} }
+            const options = { headers: { Authorization: "Bearer "+ val} }
             const res = await axios.get(`http://localhost:5000/api/recipients/fetchdonations?type=${search}`, options);
     
             if (res.data.response) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes} from "react-router-dom"
 import Donor from './Donor';
-import Home from "./Home"
 import Recipient from "./Recipient";
 import LogInDonor from "./LogInDonor";
 import LogInRecipient from './LogInRecipient';

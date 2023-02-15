@@ -17,9 +17,8 @@ function Donor() {
     useEffect(() => {
         let fetchedData = sessionStorage.getItem("currentuser");
         let fetchedDataJson = JSON.parse(fetchedData);
-        console.log(fetchedDataJson)
+        
         if (!fetchedData || fetchedDataJson.userrole !== "DONOR") {
-            console.log('inside necessary')
             nav("/login/donor");
         } else {
             setUsername(`Hi, Donor ${fetchedDataJson.username} !`);

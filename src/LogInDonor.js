@@ -14,11 +14,9 @@ const LogInDonor = (props) => {
     useEffect(() => {
         let usercheck = sessionStorage.getItem("currentuser");
         let usercheckJson = JSON.parse(usercheck);
-        if (!usercheckJson) {
-            historyRedirect("/login/donor");
-        } else {
-            historyRedirect("/users/donor")
-        }
+        if (usercheckJson) {
+            historyRedirect("/users/donor");
+        } 
 
      
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
