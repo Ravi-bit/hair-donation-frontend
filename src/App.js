@@ -4,7 +4,6 @@ import Donor from './Donor';
 import Recipient from "./Recipient";
 import LogInDonor from "./LogInDonor";
 import LogInRecipient from './LogInRecipient';
-import Header from './Header';
 import Body from './Body';
 import Register from './Register';
  
@@ -13,7 +12,6 @@ function App() {
 
    return (
     <>
-    <Header />
     <Routes>
       <Route  path="/" element={<Body />} />
       <Route  path="/home" element={<Body />} />

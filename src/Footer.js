@@ -22,14 +22,14 @@ export default function Footer() {
             <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4'>
               <h5 className='text-uppercase fw-bold mb-4'>Registered Users</h5>
               <h6>
-                60
+                Counting...
               </h6>
             </MDBCol>
 
             <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4'>
               <h5 className='text-uppercase fw-bold mb-4'>Successful Cases</h5>
               <h6>
-                20
+                Counting...
               </h6>
             </MDBCol>
 

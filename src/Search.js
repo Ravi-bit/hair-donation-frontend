@@ -28,8 +28,12 @@ function Search() {
             const res = await axios.get(`http://localhost:5000/api/recipients/fetchdonations?type=${search}`, options);
     
             if (res.data.response) {
-                toast.success("Results Fetched successfully");
-                setresD(res.data.response)
+                if (res.data.response.length !== 0) {
+                    toast.success("Results Fetched successfully");
+                    setresD(res.data.response);
+                } else {
+                    toast.info("No results found!");
+                }
             }
             if (res.data.error) {
                 toast.error(res.data.error);
@@ -50,8 +54,10 @@ function Search() {
             </form>
             </div>
             <div className="container">
-                {resD.length !== 0 ? resD.map((item) => (<SearchCard hair={item.donationDetails.hairtype} donation={item.donationDetails.donationtype}
-                    name={item.donorDetails.username} mail={item.donorDetails.mail} phn = {item.donorDetails.phone_number} />)) : (<h1>No Matches found</h1>)}
+                {resD && resD.map((item) => (<SearchCard hair={item.donationDeatils.hairtype} donation={item.donationDeatils.donationtype}
+                    name={item.donorDeatils.username} mail={item.donorDeatils.mail} phn={item.donorDeatils.phone_number} id={item.donationDeatils.donationid}
+                    status={item.donationDeatils.donationstatus} country={item.donorDeatils.country}
+                    city={item.donorDeatils.city} address={item.donorDeatils.address} />))}
             </div>
             <ToastContainer />
         </>

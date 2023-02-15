@@ -4,6 +4,7 @@ import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import "./styles/login.css";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 
 
@@ -82,6 +83,7 @@ function Register(props){
 
     return (
         <>
+        <Header />
         <div className="auth-form-container" >
             <h2 style={{marginTop : 20}}>Register</h2>
             <form className="login-form" onSubmit={handleSubmit}>

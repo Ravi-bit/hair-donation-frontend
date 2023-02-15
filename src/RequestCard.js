@@ -5,12 +5,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 
-function CustomCard(props) {
+function RequestCard(props) {
     const deleteHandler = async(e) => {
         try { 
             let val = sessionStorage.getItem("currenttoken");
             const options = { headers: { Authorization: "Bearer "+ val } }
-            const res = await axios.delete(`http://localhost:5000/api/donors/request/${e.target.id}`,  options);
+            const res = await axios.delete(`http://localhost:5000/api/recipients/request/${e.target.id}`,  options);
             console.log(res);
             if (res.data.message) {
                 toast.success("Deleted successfully");
@@ -29,13 +29,14 @@ function CustomCard(props) {
         <div>
             <Card style={{ width: '15rem', margin:20 }}>
             <Card.Body>
-                <Card.Title>Hair Type : <b>{props.hairtype}</b></Card.Title>
+                <Card.Title>Requested For : <b>{props.hairtype}</b></Card.Title>
                 <Card.Text>
                         Donation Type : <b>{props.donationtype}</b><br />
-                        Donation Status : {props.donationstatus === 0 ? <b>Available</b> : <b>Opted</b>} <br></br>
-                        Created Time: <i>{Date(props.time)}</i>
+                        Donor : <b>{ props.donor}</b> <br></br>
+                        Request Status : {props.requeststatus === 0 ? <b>Open</b> : props.requeststatus === 1 ? <p style={{color:'green'}}><b>Approved</b></p> : <p style={{color:'red'}}><b>Rejected</b></p> } <br></br>
+                        Requested Time: <i>{Date(props.time)}</i>
                 </Card.Text>
-                <Button variant="danger" id = {props.id} onClick={deleteHandler}>Delete Donation</Button>
+                <Button variant="danger" id = {props.id} onClick={deleteHandler}>Delete Request</Button>
             </Card.Body>
             </Card>
             <ToastContainer />
@@ -44,4 +45,4 @@ function CustomCard(props) {
 }
 
 
-export default CustomCard;
+export default RequestCard;

@@ -2,10 +2,12 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import './styles/body.css';
 import Footer from "./Footer";
+import Header from "./Header"
 
 function Body() {
     return (
         <React.Fragment>
+        <Header />
         <div className="containerSection" style={{backgroundColor: 'rgb(250, 245, 245)'}}>
             <div className="contentSection">
                 <h3>BLEED TO SAVE</h3>

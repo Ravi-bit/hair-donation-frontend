@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 
 const LogInDonor = (props) => {
@@ -49,6 +50,7 @@ const LogInDonor = (props) => {
 
     return (
         <>
+        <Header />
         <div className="auth-form-container" style={{padding: 100}}>
             <h2>Login As Donor</h2>
             <form className="login-form" onSubmit={handleSubmit}>
